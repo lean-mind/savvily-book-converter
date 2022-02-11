@@ -19,8 +19,7 @@ jobs:
     - name: Create test renders
       run: ./convert.sh -a
     - name: test
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator
-        .src/scripts/epub.sh
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator .src/scripts/epub.sh
     - name: List Books
       run: ls output/
 
