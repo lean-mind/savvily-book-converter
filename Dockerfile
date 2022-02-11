@@ -1,7 +1,6 @@
 FROM pandoc/latex:latest
 
 # Install latex libraries
-RUN tlmgr update --self \
     && tlmgr install pdfpages  \
     && tlmgr install tocloft  \
     && tlmgr install emptypage  \
