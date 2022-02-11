@@ -1,9 +1,9 @@
 #!/bin/sh
 . ./src/scripts/manuscriptFormatter.sh
 
-#mkdir -p output && cd .tmp-manuscript || exit
+mkdir -p output && cd .tmp-manuscript || exit
 
-#formattedManuscript=$(manuscriptFormatter "ebook")
+formattedManuscript=$(manuscriptFormatter "ebook")
 
 # Run Pandoc on formatted input
 echo "$formattedManuscript" | pandoc \
