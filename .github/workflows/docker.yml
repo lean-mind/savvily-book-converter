@@ -22,8 +22,8 @@ jobs:
       run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/epub.sh
     - name: Create sample screen-pdf
       run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/pdf.sh "screen" "report"
-    - name: Create sample print-epub
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator "src/scripts/epub.sh print book"
+    - name: Create sample print-pdf
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/epub.sh "print" "book"
     - name: List Books
       run: ls output/
 

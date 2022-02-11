@@ -23,7 +23,6 @@ esac
 
 echo "HEY!"
 
-mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
 docker run -it --rm \
   --volume "$PWD":/data \
