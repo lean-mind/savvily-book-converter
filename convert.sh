@@ -21,7 +21,6 @@ case "$1" in
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac
 
-mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
 docker run -it --rm \
   --volume "$PWD":/data \
