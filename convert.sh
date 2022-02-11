@@ -21,11 +21,16 @@ case "$1" in
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac
 
+echo "HEY!"
+
+mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
 docker run -it --rm \
   --volume "$PWD":/data \
   -u "$(id -u "$USER"):$(id -g "$USER")" \
   savvily-book-generator \
   $scriptToRun
+
+echo "HEY!"
 
 rm -rf .tmp-manuscript
