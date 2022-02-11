@@ -19,7 +19,7 @@ jobs:
     - name: Create test renders
       run: ./convert.sh -a
     - name: test-sample
-      run: mkdir -p .tmp-manuscript && cp -r tmp-manuscript/* ./.tmp-manuscript
+      run: mkdir -p .tmp-manuscript && cp -r sample-manuscript/* ./.tmp-manuscript
     - name: test
       run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator "src/scripts/epub.sh"
     - name: List Books
