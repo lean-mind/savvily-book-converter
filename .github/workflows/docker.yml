@@ -20,7 +20,7 @@ jobs:
       run: ./convert.sh -a
     - name: test
       run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator
-        .scr/scripts/epub.sh
+        .src/scripts/epub.sh
     - name: List Books
       run: ls output/
 
