@@ -4,7 +4,7 @@
 outputType=$1
 latexClass=$2
 
-mkdir -p output/.tmp && cd .manuscript || exit
+mkdir -p output/.tmp && cd .tmp-manuscript || exit
 
 formattedManuscript=$(manuscriptFormatter "$outputType")
 
