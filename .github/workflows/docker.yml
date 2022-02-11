@@ -18,8 +18,12 @@ jobs:
       run: docker build $PWD --file Dockerfile --tag savvily-book-generator
     - name: Create test renders
       run: ./convert.sh -a
+    - name: test-ls
+      run: ls
+    - name: test-tree
+      run: tree
     - name: test
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator .src/scripts/epub.sh
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator ".src/scripts/epub.sh"
     - name: List Books
       run: ls output/
 
