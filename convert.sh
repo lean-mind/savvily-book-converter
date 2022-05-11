@@ -23,7 +23,8 @@ case "$1" in
 
   -s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
 
-  -e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
+  #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
+  -e| --epub) scriptToRun="-c python3 -B src/scripts/epub.py" format="epub";;
 
   -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
 

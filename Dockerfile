@@ -16,6 +16,7 @@ RUN tlmgr update --self \
     && tlmgr install datatool
 RUN apk add sed
 RUN apk add ghostscript
+RUN apk add python3
 
 # Install JetBrains Mono font
 RUN mkdir -p /usr/share/fonts/
