@@ -1,17 +1,15 @@
 import subprocess
 import sys
 import os
-
 import manuscriptFormatter
 
-formattingCommand = manuscriptFormatter.getCommandFor("ebook")
-
-subprocess.run('mkdir -p output', capture_output=True, text=True, shell=True)
+subprocess.run(['mkdir', '-p', 'output'])
 os.chdir('.tmp-manuscript')
 
+formattingCommand = manuscriptFormatter.getCommandFor("ebook")
+formattedPandocInput = subprocess.Popen(formattingCommand, stdout=subprocess.PIPE, shell=True)
 
-pandocCommand = 'timeout 600 pandoc --epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf --css ../src/templates/epub/epub.css --epub-cover-image ./resources/book-cover-print.png -o ./../output/ebook.epub --metadata-file ../src/templates/epub/metadata.yml'
-
-paco = subprocess.run('%s | %s' % (formattingCommand, pandocCommand), capture_output=True, text=True, shell=True)
+pandocEpubCommand = 'timeout 600 pandoc --epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf --css ../src/templates/epub/epub.css --epub-cover-image ./resources/book-cover-print.png -o ./../output/ebook.epub --metadata-file ../src/templates/epub/metadata.yml'
+subprocess.run(pandocEpubCommand, stdin=formattedPandocInput.stdout, shell=True)
 
 sys.exit(0)
