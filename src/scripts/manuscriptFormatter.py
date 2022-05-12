@@ -12,8 +12,12 @@ def getFormattedManuscriptStreamForPrint():
 
 
 def __basicFormattedStream():
-    findCommand = "find . -maxdepth 1 -name '[0-9]*.txt' -o -name '[0-9]*.md'"
-    unsortedManuscript = sp.Popen(findCommand, stdout=sp.PIPE, shell=True).stdout
+    findCommand = ["find", ".",
+                   "-maxdepth", "1",
+                   "-name", "[0-9]*.txt",
+                   "-o",
+                   "-name", "[0-9]*.md"]
+    unsortedManuscript = sp.Popen(findCommand, stdout=sp.PIPE).stdout
 
     sortCommand = ["sort", "-V"]
     sortedManuscript = sp.Popen(sortCommand, stdin=unsortedManuscript, stdout=sp.PIPE).stdout
@@ -21,12 +25,16 @@ def __basicFormattedStream():
     catToStdout = ["xargs", "cat"]
     manuscriptStream = sp.Popen(catToStdout, stdin=sortedManuscript, stdout=sp.PIPE).stdout
 
-    return sp.Popen(__buildSedCommand(), stdin=manuscriptStream, stdout=sp.PIPE, shell=True).stdout
+    return sp.Popen(__buildSedCommand(), stdin=manuscriptStream, stdout=sp.PIPE).stdout
 
 
 def __buildSedCommand():
-    insertLineBeforeHeaders = r"'s:(^#):\n\1:'"
-    removeSpaceFromLinkTags = r"'s:] \(:](:g'"
-    capitalizeCodeBlockLanguages = r"'s:(```)(.+)$:\1{title=\u\2}:'"
-    removeSpaceBeforeAnchor = r"'s:\s\[\^:\[\^:g'"
-    return r"sed -Ee %s -Ee %s -Ee %s -Ee %s" % (insertLineBeforeHeaders, removeSpaceFromLinkTags, capitalizeCodeBlockLanguages, removeSpaceBeforeAnchor)
+    insertLineBeforeHeaders = "s:(^#):\\n\\1:"
+    removeSpaceFromLinkTags = "s:] \\(:](:g"
+    capitalizeCodeBlockLanguages = "s:(```)(.+)$:\\1{title=\\u\\2}:"
+    removeSpaceBeforeAnchor = "s:\\s\\[\\^:\\[\\^:g"
+    return ["sed",
+            "-Ee", insertLineBeforeHeaders,
+            "-Ee", removeSpaceFromLinkTags,
+            "-Ee", capitalizeCodeBlockLanguages,
+            "-Ee", removeSpaceBeforeAnchor]
