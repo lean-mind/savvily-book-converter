@@ -4,7 +4,7 @@ import os
 import manuscriptFormatter
 
 
-def buildPandocCommand():
+def __buildPandocCommand():
     metadata = '--metadata-file=../src/templates/epub/metadata.yml'
     output = '--output=./../output/ebook.epub'
     css = '--css=../src/templates/epub/epub.css'
@@ -13,15 +13,15 @@ def buildPandocCommand():
     return ['timeout', '600', 'pandoc', font, css, coverImage, output, metadata]
 
 
-def createEpubFromStream(formattedStream):
-    subprocess.run(buildPandocCommand(), stdin=formattedStream, check=True)
+def __createEpubFromStream(formattedStream):
+    subprocess.run(__buildPandocCommand(), stdin=formattedStream, check=True)
 
 
 if __name__ == "__main__":
     try:
         os.makedirs('output', exist_ok=True)
         os.chdir('.tmp-manuscript')
-        createEpubFromStream(manuscriptFormatter.getFormattedManuscriptStreamForEpub())
+        __createEpubFromStream(manuscriptFormatter.getFormattedManuscriptStreamForEpub())
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print('[ERROR]: Pandoc command failed!\n', e)
