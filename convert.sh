@@ -24,7 +24,7 @@ case "$1" in
   -s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
 
   #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
-  -e| --epub) scriptToRun="-c python3 -B src/scripts/epub.py" format="epub";;
+  -e| --epub) scriptToRun=" python3 -B src/scripts/epub.py" format="epub";;
 
   -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
 
@@ -45,13 +45,13 @@ docker run --rm \
   --volume "$PWD":/data \
   -u "$(id -u "$USER"):$(id -g "$USER")" \
   savvily-book-generator \
-  $scriptToRun
+  "$scriptToRun"
 
 rm -rf .tmp-manuscript
 
-if [ "$format" = "epub" ]; then
-  . ./src/scripts/epubFormatter.sh
-fi
+#if [ "$format" = "epub" ]; then
+  #. ./src/scripts/epubFormatter.sh
+#fi
 
-. ./src/scripts/wrapBooks.sh
+#. ./src/scripts/wrapBooks.sh
 
