@@ -6,8 +6,8 @@ def getFormattedManuscriptStreamForEpub():
 
 
 def getFormattedManuscriptStreamForPrint():
-    linksAsFootnotes = r'sed -E "/!.*/! s:(.+?)\[(.....+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g'
-    return sp.Popen(linksAsFootnotes, stdin=__basicFormattedStream(), stdout=sp.PIPE, shell=True).stdout
+    turnLinksToFootnotes = r'sed -E "/!.*/! s:(.+?)\[(.....+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g'
+    return sp.Popen(turnLinksToFootnotes, stdin=__basicFormattedStream(), stdout=sp.PIPE, shell=True).stdout
 
 
 
@@ -18,15 +18,15 @@ def __basicFormattedStream():
     sortCommand = ["sort", "-V"]
     sortedManuscript = sp.Popen(sortCommand, stdin=unsortedManuscript, stdout=sp.PIPE).stdout
 
-    turnToStreamCommand = ["xargs", "cat"]
-    manuscriptStream = sp.Popen(turnToStreamCommand, stdin=sortedManuscript, stdout=sp.PIPE).stdout
+    catToStdout = ["xargs", "cat"]
+    manuscriptStream = sp.Popen(catToStdout, stdin=sortedManuscript, stdout=sp.PIPE).stdout
 
     return sp.Popen(__buildSedCommand(), stdin=manuscriptStream, stdout=sp.PIPE, shell=True).stdout
 
 
 def __buildSedCommand():
-    fixHeaders = r"'s:(^#):\n\1:'"
-    fixLinks = r"'s:] \(:](:g'"
+    insertLineBeforeHeaders = r"'s:(^#):\n\1:'"
+    removeSpaceFromLinkTags = r"'s:] \(:](:g'"
     capitalizeCodeBlockLanguages = r"'s:(```)(.+)$:\1{title=\u\2}:'"
-    fixAnchors = r"'s:\s\[\^:\[\^:g'"
-    return r"sed -Ee %s -Ee %s -Ee %s -Ee %s" % (fixHeaders, fixLinks, capitalizeCodeBlockLanguages, fixAnchors)
+    removeSpaceBeforeAnchor = r"'s:\s\[\^:\[\^:g'"
+    return r"sed -Ee %s -Ee %s -Ee %s -Ee %s" % (insertLineBeforeHeaders, removeSpaceFromLinkTags, capitalizeCodeBlockLanguages, removeSpaceBeforeAnchor)
