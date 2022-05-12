@@ -1,11 +1,21 @@
 import subprocess
 
 
-def getCommandFor(type: str):
-  sortCommand = "find . -maxdepth 1 -name '[0-9]*.txt' -o -name '[0-9]*.md' | sort -V | xargs cat"
-  manuscriptStream = subprocess.Popen(sortCommand, stdout=subprocess.PIPE, shell=True).stdout
+def getFormattedManuscriptStreamFor(type: str):
+  findCommand = "find . -maxdepth 1 -name '[0-9]*.txt' -o -name '[0-9]*.md'"
+  unsortedManuscript = subprocess.Popen(findCommand, stdout=subprocess.PIPE, shell=True).stdout
 
-  formatCommand = r"sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' -Ee 's:\s\[\^:\[\^:g'"
+  sortCommand = "sort -V"
+  sortedManuscript = subprocess.Popen(sortCommand, stdin=unsortedManuscript, stdout=subprocess.PIPE, shell=True).stdout
+
+  turnToStreamCommand = "xargs cat"
+  manuscriptStream = subprocess.Popen(turnToStreamCommand, stdin=sortedManuscript, stdout=subprocess.PIPE, shell=True).stdout
+
+  fixHeaders = r"'s:(^#):\n\1:'"
+  fixLinks = r"'s:] \(:](:g'"
+  capitalizeCodeBlockLanguages = r"'s:(```)(.+)$:\1{title=\u\2}:'"
+  fixAnchors = r"'s:\s\[\^:\[\^:g'"
+  formatCommand = r"sed -Ee %s -Ee %s -Ee %s -Ee %s" % (fixHeaders, fixLinks, capitalizeCodeBlockLanguages, fixAnchors)
   formattedManuscriptStream = subprocess.Popen(formatCommand, stdin=manuscriptStream, stdout=subprocess.PIPE, shell=True).stdout
 
   if type == "print":
