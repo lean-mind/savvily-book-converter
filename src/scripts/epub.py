@@ -1,10 +1,11 @@
 import subprocess
 import sys
-import os
-import manuscriptFormatter
+from os import makedirs, chdir
+from io import BufferedReader
+from manuscriptFormatter import getFormattedManuscriptStreamForEpub
 
 
-def __buildPandocCommand():
+def __buildPandocCommand() -> list:
     metadata = '--metadata-file=../src/templates/epub/metadata.yml'
     output = '--output=./../output/ebook.epub'
     css = '--css=../src/templates/epub/epub.css'
@@ -13,15 +14,15 @@ def __buildPandocCommand():
     return ['timeout', '600', 'pandoc', font, css, coverImage, output, metadata]
 
 
-def __createEpubFromStream(formattedStream):
+def __createEpubFromStream(formattedStream: BufferedReader):
     subprocess.run(__buildPandocCommand(), stdin=formattedStream, check=True)
 
 
 if __name__ == "__main__":
     try:
-        os.makedirs('output', exist_ok=True)
-        os.chdir('.tmp-manuscript')
-        __createEpubFromStream(manuscriptFormatter.getFormattedManuscriptStreamForEpub())
+        makedirs('output', exist_ok=True)
+        chdir('.tmp-manuscript')
+        __createEpubFromStream(getFormattedManuscriptStreamForEpub())
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print('[ERROR]: Pandoc command failed!\n', e)

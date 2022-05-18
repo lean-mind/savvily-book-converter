@@ -1,11 +1,12 @@
 import subprocess as sp
+from io import BufferedReader
 
 
-def getFormattedManuscriptStreamForEpub():
+def getFormattedManuscriptStreamForEpub() -> BufferedReader:
     return __basicFormattedStream()
 
 
-def getFormattedManuscriptStreamForPrint():
+def getFormattedManuscriptStreamForPrint() -> BufferedReader:
     ignoreImages = r'/!.*/!'
     search = __buildSearchRegex()
     replace = __buildReplaceRegex()
@@ -14,7 +15,7 @@ def getFormattedManuscriptStreamForPrint():
     return sp.Popen(turnLinksToFootnotes, stdin=__basicFormattedStream(), stdout=sp.PIPE, shell=True).stdout
 
 
-def __buildSearchRegex():
+def __buildSearchRegex() -> str:
     groupPrecedingLink = r'(.+?)'
     groupLinkText = r'\[(.....+?)\]'
     groupLinkUrl = r'\(([^)]+)\)'
@@ -22,7 +23,7 @@ def __buildSearchRegex():
     return f'{groupPrecedingLink}{groupLinkText}{groupLinkUrl}{groupFollowingLink}'
 
 
-def __buildReplaceRegex():
+def __buildReplaceRegex() -> str:
     precedingReference = r'\1'
     referencedText = r'\2'
     urlAsAnchorText = r'\3'
@@ -30,7 +31,7 @@ def __buildReplaceRegex():
     return f'{precedingReference}{referencedText}[^{urlAsAnchorText}]{followingReference}\\n\\n[^{urlAsAnchorText}]\\: {urlAsAnchorText}\\n'
 
 
-def __basicFormattedStream():
+def __basicFormattedStream() -> BufferedReader:
     findCommand = ["find", ".",
                    "-maxdepth", "1",
                    "-name", "[0-9]*.txt",
@@ -47,7 +48,7 @@ def __basicFormattedStream():
     return sp.Popen(__buildSedCommand(), stdin=manuscriptStream, stdout=sp.PIPE).stdout
 
 
-def __buildSedCommand():
+def __buildSedCommand() -> list:
     insertLineBeforeHeaders = r"s:(^#):\n\1:"
     removeSpaceFromLinkTags = r"s:] \(:](:g"
     capitalizeCodeBlockLanguages = r"s:(```)(.+)$:\1{title=\u\2}:"
