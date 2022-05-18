@@ -6,9 +6,28 @@ def getFormattedManuscriptStreamForEpub():
 
 
 def getFormattedManuscriptStreamForPrint():
-    turnLinksToFootnotes = r'sed -E "/!.*/! s:(.+?)\[(.....+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g'
+    ignoreImages = r'/!.*/!'
+    search = __buildSearchRegex()
+    replace = __buildReplaceRegex()
+    turnLinksToFootnotes = f'sed -E "{ignoreImages} s:{search}:{replace}:g"'
+    print(turnLinksToFootnotes)
     return sp.Popen(turnLinksToFootnotes, stdin=__basicFormattedStream(), stdout=sp.PIPE, shell=True).stdout
 
+
+def __buildSearchRegex():
+    groupPrecedingLink = r'(.+?)'
+    groupLinkText = r'\[(.....+?)\]'
+    groupLinkUrl = r'\(([^)]+)\)'
+    groupFollowingLink = r'(.+?)'
+    return f'{groupPrecedingLink}{groupLinkText}{groupLinkUrl}{groupFollowingLink}'
+
+
+def __buildReplaceRegex():
+    precedingReference = r'\1'
+    referencedText = r'\2'
+    urlAsAnchorText = r'\3'
+    followingReference = r'\4'
+    return f'{precedingReference}{referencedText}[^{urlAsAnchorText}]{followingReference}\\n\\n[^{urlAsAnchorText}]\\: {urlAsAnchorText}\\n'
 
 
 def __basicFormattedStream():
@@ -29,10 +48,10 @@ def __basicFormattedStream():
 
 
 def __buildSedCommand():
-    insertLineBeforeHeaders = "s:(^#):\\n\\1:"
-    removeSpaceFromLinkTags = "s:] \\(:](:g"
-    capitalizeCodeBlockLanguages = "s:(```)(.+)$:\\1{title=\\u\\2}:"
-    removeSpaceBeforeAnchor = "s:\\s\\[\\^:\\[\\^:g"
+    insertLineBeforeHeaders = r"s:(^#):\n\1:"
+    removeSpaceFromLinkTags = r"s:] \(:](:g"
+    capitalizeCodeBlockLanguages = r"s:(```)(.+)$:\1{title=\u\2}:"
+    removeSpaceBeforeAnchor = r"s:\s\[\^:\[\^:g"
     return ["sed",
             "-Ee", insertLineBeforeHeaders,
             "-Ee", removeSpaceFromLinkTags,
