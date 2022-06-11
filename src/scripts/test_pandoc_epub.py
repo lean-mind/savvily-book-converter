@@ -7,11 +7,9 @@ book = epub.read_epub(epub_path)
 
 def chapters_href() -> list:
     full_content = epub_explorer.ZipFile(epub_path).namelist()
-    chapters = []
-    for ebook_item in full_content:
-        if (ebook_item.startswith('EPUB/text/ch')):
-            chapters.append(ebook_item.replace('EPUB/', ''))
-    return chapters
+    return [ebook_item.replace('EPUB/', '')
+            for ebook_item in full_content
+            if (ebook_item.startswith('EPUB/text/ch'))]
 
 
 class Test_pandoc_epub_output:
