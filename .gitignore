@@ -1,4 +1,5 @@
 .idea/
 .DS_Store
 output/
+__pycache__/
 missfont.log
