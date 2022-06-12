@@ -1,4 +1,4 @@
-from manuscriptFormatter import getFormattedManuscriptStreamForEpub
+from src.manuscriptFormatter import getFormattedManuscriptStreamForEpub
 from os import chdir
 
 
