@@ -3,6 +3,7 @@ import sys
 from os import makedirs, chdir
 from typing import IO
 from manuscriptFormatter import get_formatted_manuscript_stream_for_epub
+from typing import Union
 
 
 def __build_pandoc_command() -> list:
@@ -14,7 +15,7 @@ def __build_pandoc_command() -> list:
     return ['timeout', '600', 'pandoc', font, css, cover_image, output, metadata]
 
 
-def __create_epub_from_stream(formatted_stream: IO[bytes] | None):
+def __create_epub_from_stream(formatted_stream: Union[IO[bytes], None]):
     subprocess.run(__build_pandoc_command(), stdin=formatted_stream, check=True)
 
 

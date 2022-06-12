@@ -1,16 +1,17 @@
 import subprocess as sp
 from typing import IO
+from typing import Union
 
 
-def get_formatted_manuscript_stream_for_epub() -> IO[bytes] | None:
+def get_formatted_manuscript_stream_for_epub() -> Union[IO[bytes], None]:
     return __basic_formatted_stream()
 
 
-def get_formatted_manuscript_stream_for_screen_pdf() -> IO[bytes] | None:
+def get_formatted_manuscript_stream_for_screen_pdf() -> Union[IO[bytes], None]:
     return __basic_formatted_stream()
 
 
-def get_formatted_manuscript_stream_for_print_pdf() -> IO[bytes] | None:
+def get_formatted_manuscript_stream_for_print_pdf() -> Union[IO[bytes], None]:
     ignore_images = r'/!.*/!'
     search = __build_search_regex()
     replace = __build_replace_regex()
@@ -34,7 +35,7 @@ def __build_replace_regex() -> str:
     return f'{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference}\\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n'
 
 
-def __basic_formatted_stream() -> IO[bytes] | None:
+def __basic_formatted_stream() -> Union[IO[bytes], None]:
     find_command = ['find', '.',
                     '-maxdepth', '1',
                     '-name', '[0-9]*.txt',
