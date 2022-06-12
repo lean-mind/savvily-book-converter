@@ -1,17 +1,16 @@
 import subprocess as sp
-from io import BufferedReader
+from typing import IO
 
 
-def get_formatted_manuscript_stream_for_epub() -> BufferedReader:
+def get_formatted_manuscript_stream_for_epub() -> IO[bytes] | None:
     return __basic_formatted_stream()
 
 
-def get_formatted_manuscript_stream_for_print() -> BufferedReader:
+def get_formatted_manuscript_stream_for_print() -> IO[bytes] | None:
     ignore_images = r'/!.*/!'
     search = __build_search_regex()
     replace = __build_replace_regex()
     turn_links_to_footnotes = f'sed -E "{ignore_images} s:{search}:{replace}:g"'
-    print(turn_links_to_footnotes)
     return sp.Popen(turn_links_to_footnotes, stdin=__basic_formatted_stream(), stdout=sp.PIPE, shell=True).stdout
 
 
@@ -28,33 +27,34 @@ def __build_replace_regex() -> str:
     referenced_text = r'\2'
     url_as_anchor_text = r'\3'
     following_reference = r'\4'
-    return f'{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference}\\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n'
+    return f'{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference} \
+    \\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n'
 
 
-def __basic_formatted_stream() -> BufferedReader:
-    find_command = ["find", ".",
-                   "-maxdepth", "1",
-                   "-name", "[0-9]*.txt",
-                   "-o",
-                   "-name", "[0-9]*.md"]
+def __basic_formatted_stream() -> IO[bytes] | None:
+    find_command = ['find', '.',
+                    '-maxdepth', '1',
+                    '-name', '[0-9]*.txt',
+                    '-o',
+                    '-name', '[0-9]*.md']
     unsorted_manuscript = sp.Popen(find_command, stdout=sp.PIPE).stdout
 
-    sort_command = ["sort", "-V"]
+    sort_command = ['sort', '-V']
     sorted_manuscript = sp.Popen(sort_command, stdin=unsorted_manuscript, stdout=sp.PIPE).stdout
 
-    cat_to_stdout = ["xargs", "cat"]
+    cat_to_stdout = ['xargs', 'cat']
     manuscript_stream = sp.Popen(cat_to_stdout, stdin=sorted_manuscript, stdout=sp.PIPE).stdout
 
     return sp.Popen(__build_sed_command(), stdin=manuscript_stream, stdout=sp.PIPE).stdout
 
 
 def __build_sed_command() -> list:
-    insert_line_before_headers = r"s:(^#):\n\1:"
-    remove_space_from_link_tags = r"s:] \(:](:g"
-    capitalize_code_block_languages = r"s:(```)(.+)$:\1{title=\u\2}:"
-    remove_space_before_anchor = r"s:\s\[\^:\[\^:g"
-    return ["sed",
-            "-Ee", insert_line_before_headers,
-            "-Ee", remove_space_from_link_tags,
-            "-Ee", capitalize_code_block_languages,
-            "-Ee", remove_space_before_anchor]
+    insert_line_before_headers = r's:(^#):\n\1:'
+    remove_space_from_link_tags = r's:] \(:](:g'
+    capitalize_code_block_languages = r's:(```)(.+)$:\1{title=\u\2}:'
+    remove_space_before_anchor = r's:\s\[\^:\[\^:g'
+    return ['sed',
+            '-Ee', insert_line_before_headers,
+            '-Ee', remove_space_from_link_tags,
+            '-Ee', capitalize_code_block_languages,
+            '-Ee', remove_space_before_anchor]
