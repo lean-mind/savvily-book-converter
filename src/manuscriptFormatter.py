@@ -6,7 +6,11 @@ def get_formatted_manuscript_stream_for_epub() -> IO[bytes] | None:
     return __basic_formatted_stream()
 
 
-def get_formatted_manuscript_stream_for_print() -> IO[bytes] | None:
+def get_formatted_manuscript_stream_for_screen_pdf() -> IO[bytes] | None:
+    return __basic_formatted_stream()
+
+
+def get_formatted_manuscript_stream_for_print_pdf() -> IO[bytes] | None:
     ignore_images = r'/!.*/!'
     search = __build_search_regex()
     replace = __build_replace_regex()
