@@ -1,7 +1,7 @@
 from pdfminer.high_level import extract_text
 
 
-class Test_pandoc_pdf_output:
+class TestPandocPdfOutput:
     raw_text = extract_text('../output/codigo_sostenible_savvily/codigo_sostenible_savvily.pdf')
     text_without_empty_lines = [line
                                 for line in raw_text.splitlines()

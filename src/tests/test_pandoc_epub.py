@@ -12,9 +12,9 @@ def chapters_href() -> list:
             if (ebook_item.startswith('EPUB/text/ch'))]
 
 
-class Test_pandoc_epub_output:
+class TestPandocEpubOutput:
 
-    class Test_headings:
+    class TestHeadings:
         first_chapter_href: str = chapters_href()[0]
         chapter_one = book.get_item_with_href(first_chapter_href)
         chapter_one_text: str = chapter_one.get_content().decode()

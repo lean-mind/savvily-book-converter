@@ -1,12 +1,12 @@
-from src.manuscriptFormatter import getFormattedManuscriptStreamForEpub
+from src.manuscriptFormatter import get_formatted_manuscript_stream_for_epub
 from os import chdir
 
 
-class Test_accpetance_ebook_formatter:
+class TestAcceptanceEbookFormatter:
     chdir('sample-manuscript')
 
     def test_new_format(self):
-        assert getFormattedManuscriptStreamForEpub().read().decode() == old_epub_format
+        assert get_formatted_manuscript_stream_for_epub().read().decode() == old_epub_format
 
 
 old_epub_format = """
