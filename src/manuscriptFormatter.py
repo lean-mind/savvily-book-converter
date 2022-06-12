@@ -27,8 +27,7 @@ def __build_replace_regex() -> str:
     referenced_text = r'\2'
     url_as_anchor_text = r'\3'
     following_reference = r'\4'
-    return f'{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference} \
-    \\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n'
+    return f'{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference}\\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n'
 
 
 def __basic_formatted_stream() -> IO[bytes] | None:
