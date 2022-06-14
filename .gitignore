@@ -3,3 +3,4 @@
 output/
 __pycache__/
 missfont.log
+Pipfile.lock

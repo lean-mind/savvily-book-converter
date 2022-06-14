@@ -1,0 +1,15 @@
+[packages]
+
+[dev-packages]
+pdfminer-six = "*"
+ebooklib = "*"
+black = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[requires]
+python_version = "3.10"
+
+[scripts]
+tests-cov = "pytest --cov"
+tests = "pytest"

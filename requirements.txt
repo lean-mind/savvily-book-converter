@@ -1,3 +1,0 @@
-pdfminer
-ebooklib
-zipfile as epub_explorer
