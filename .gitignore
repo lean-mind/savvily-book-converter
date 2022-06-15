@@ -2,5 +2,6 @@
 .DS_Store
 output/
 __pycache__/
+.pytest_cache
 missfont.log
 Pipfile.lock
