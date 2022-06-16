@@ -6,10 +6,12 @@ ebooklib = "*"
 black = "*"
 pytest = "*"
 pytest-cov = "*"
+pytest-watch = "*"
 
 [requires]
 python_version = "3.10"
 
 [scripts]
-tests-cov = "pytest --cov"
+t-cov = "pytest --cov"
+t-watch = "ptw"
 tests = "pytest"
