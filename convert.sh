@@ -20,13 +20,13 @@ fi
 
 case "$1" in
   -p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
-  #-p| --print) scriptToRun="python3 -B src/pdf.py print book" ;;
+  #-p| --print) scriptToRun="python3 -B src/pdf-print.py" ;;
 
   #-s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
-  -s| --screen) scriptToRun="python3 -B src/pdf.py screen report" ;;
+  -s| --screen) scriptToRun="python3 -B src/pdf-screen.py" ;;
 
   #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
-  -e| --epub) scriptToRun="python3 -B src/epub.py" format="epub";;
+  -e| --epub) scriptToRun="python3 -B src/epub.py";;
 
   -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
 
