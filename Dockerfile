@@ -1,25 +1,30 @@
 FROM pandoc/latex:latest
 
-# Install latex libraries
+# Install latex libraries & dependencies
 RUN tlmgr update --self \
-    && tlmgr install pdfpages  \
-    && tlmgr install tocloft  \
-    && tlmgr install emptypage  \
-    && tlmgr install footmisc  \
-    && tlmgr install titlesec  \
-    && tlmgr install wallpaper  \
-    && tlmgr install roboto  \
-    && tlmgr install incgraph  \
-    && tlmgr install tcolorbox  \
-    && tlmgr install environ  \
-    && tlmgr install eso-pic \
-    && tlmgr install datatool
-RUN apk add sed
-RUN apk add ghostscript
+  && tlmgr install \
+    pdfpages \
+    tocloft  \
+    emptypage  \
+    footmisc  \
+    titlesec  \
+    wallpaper  \
+    roboto  \
+    incgraph  \
+    tcolorbox  \
+    environ  \
+    eso-pic \
+    datatool
+RUN apk add sed ghostscript curl
 
-# Install JetBrains Mono font
-RUN mkdir -p /usr/share/fonts/
-COPY src/JetBrains_Mono/static/*.ttf /usr/share/fonts/
-COPY src/Roboto/*.ttf /usr/share/fonts/
+# Install fonts
+RUN /bin/sh -c \
+  "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)" \
+  && cp /root/.local/share/fonts/fonts/ttf/* /usr/share/fonts \
+  && curl -L -O https://github.com/googlefonts/roboto/releases/download/v2.138/roboto-unhinted.zip \
+  && unzip -q roboto-unhinted.zip -d /usr/share/fonts
+
+# Clean font cache
 RUN fc-cache -f && rm -rf /var/cache/*
-ENTRYPOINT ["sh"]
+
+ENTRYPOINT ["sh", "-c"]
