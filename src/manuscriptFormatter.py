@@ -3,7 +3,7 @@ from typing import IO
 from typing import Union
 
 
-def get_formatted_manuscript_stream_for_epub(input_markdown_path: str) -> Union[IO[bytes], None]:
+def get_formatted_md_for_epub_as_stream(input_markdown_path: str) -> Union[IO[bytes], None]:
     return __basic_formatted_stream(input_markdown_path)
 
 
