@@ -26,7 +26,7 @@ case "$1" in
   -s| --screen) scriptToRun="python3 -B src/pdf-screen.py" ;;
 
   #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
-  -e| --epub) scriptToRun="python3 -B src/epub.py";;
+  -e| --epub) scriptToRun="python3 -B src/epub.py $manuscript";;
 
   -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
 
