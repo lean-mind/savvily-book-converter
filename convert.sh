@@ -19,11 +19,11 @@ else
 fi
 
 case "$1" in
-  -p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
-  #-p| --print) scriptToRun="python3 -B src/pdf-print.py" ;;
+  #-p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
+  -p| --print) scriptToRun="python3 -B src/pdf-print.py $manuscript" ;;
 
   #-s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
-  -s| --screen) scriptToRun="python3 -B src/pdf-screen.py" ;;
+  -s| --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
 
   #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
   -e| --epub) scriptToRun="python3 -B src/epub.py $manuscript";;
