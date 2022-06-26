@@ -1,7 +1,7 @@
 from ebooklib import epub
 import zipfile as epub_explorer
 
-epub_path = "../output/ebook.epub"
+epub_path = "output/ebook.epub"
 book = epub.read_epub(epub_path)
 
 

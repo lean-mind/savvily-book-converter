@@ -3,22 +3,22 @@ from typing import IO
 from typing import Union
 
 
-def get_formatted_manuscript_stream_for_epub() -> Union[IO[bytes], None]:
-    return __basic_formatted_stream()
+def get_formatted_manuscript_stream_for_epub(input_markdown_path: str) -> Union[IO[bytes], None]:
+    return __basic_formatted_stream(input_markdown_path)
 
 
-def get_formatted_manuscript_stream_for_screen_pdf() -> Union[IO[bytes], None]:
-    return __basic_formatted_stream()
+def get_formatted_manuscript_stream_for_screen_pdf(input_markdown_path: str) -> Union[IO[bytes], None]:
+    return __basic_formatted_stream(input_markdown_path)
 
 
-def get_formatted_manuscript_stream_for_print_pdf() -> Union[IO[bytes], None]:
+def get_formatted_manuscript_stream_for_print_pdf(input_markdown_path: str) -> Union[IO[bytes], None]:
     ignore_images = r"/!.*/!"
     search = __build_search_regex()
     replace = __build_replace_regex()
     turn_links_to_footnotes = f'sed -E "{ignore_images} s:{search}:{replace}:g"'
     return sp.Popen(
         turn_links_to_footnotes,
-        stdin=__basic_formatted_stream(),
+        stdin=__basic_formatted_stream(input_markdown_path),
         stdout=sp.PIPE,
         shell=True,
     ).stdout
@@ -42,10 +42,10 @@ def __build_replace_regex() -> str:
     return f"{preceding_reference}{referenced_text}[^{url_as_anchor_text}]{following_reference}\\n\\n[^{url_as_anchor_text}]\\: {url_as_anchor_text}\\n"
 
 
-def __basic_formatted_stream() -> Union[IO[bytes], None]:
+def __basic_formatted_stream(input_markdown_path: str) -> Union[IO[bytes], None]:
     find_command = [
         "find",
-        ".",
+        input_markdown_path,
         "-maxdepth",
         "1",
         "-name",

@@ -23,7 +23,7 @@ if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
         chdir(".tmp-manuscript")
-        __create_epub_from_stream(get_formatted_manuscript_stream_for_epub())
+        __create_epub_from_stream(get_formatted_manuscript_stream_for_epub('.'))
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print("[ERROR]: Pandoc command failed!\n", e)

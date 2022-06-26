@@ -1,25 +1,23 @@
 import src.manuscriptFormatter as formatter
-from os import chdir
 
 
 class TestFormatter:
-    chdir("sample-manuscript")
 
     def test_new_ebook_format(self):
         assert (
-            formatter.get_formatted_manuscript_stream_for_epub().read().decode()
+            formatter.get_formatted_manuscript_stream_for_epub('sample-manuscript').read().decode()
             == old_epub_format
         )
 
     def test_new_pdf_print_format(self):
         assert (
-            formatter.get_formatted_manuscript_stream_for_print_pdf().read().decode()
+            formatter.get_formatted_manuscript_stream_for_print_pdf('sample-manuscript').read().decode()
             == old_pdf_print_format
         )
 
     def test_new_pdf_screen_format(self):
         assert (
-            formatter.get_formatted_manuscript_stream_for_screen_pdf().read().decode()
+            formatter.get_formatted_manuscript_stream_for_screen_pdf('sample-manuscript').read().decode()
             == old_pdf_screen_format
         )
 
