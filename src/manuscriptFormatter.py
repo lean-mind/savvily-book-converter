@@ -3,15 +3,21 @@ from typing import IO
 from typing import Union
 
 
-def get_formatted_md_for_epub_as_stream(input_markdown_path: str) -> Union[IO[bytes], None]:
+def get_formatted_md_for_epub_as_stream(
+    input_markdown_path: str,
+) -> Union[IO[bytes], None]:
     return __basic_formatted_stream(input_markdown_path)
 
 
-def get_formatted_manuscript_stream_for_screen_pdf(input_markdown_path: str) -> Union[IO[bytes], None]:
+def get_formatted_manuscript_stream_for_screen_pdf(
+    input_markdown_path: str,
+) -> Union[IO[bytes], None]:
     return __basic_formatted_stream(input_markdown_path)
 
 
-def get_formatted_manuscript_stream_for_print_pdf(input_markdown_path: str) -> Union[IO[bytes], None]:
+def get_formatted_manuscript_stream_for_print_pdf(
+    input_markdown_path: str,
+) -> Union[IO[bytes], None]:
     ignore_images = r"/!.*/!"
     search = __build_search_regex()
     replace = __build_replace_regex()
