@@ -1,9 +1,10 @@
 import subprocess
 import sys
 from os import makedirs, chdir
-import manuscriptFormatter as formatter
+import src.formatter.printPDFFormatter as printPdfFormatter
 
 
+# TODO.restructure based on pdf-screen.py
 def __pandoc_command(manuscript_path: str) -> list:
     engine = "--pdf-engine=xelatex"
     template = "--template=src/templates/print/custom-book.tex"
@@ -23,13 +24,15 @@ def __pandoc_command(manuscript_path: str) -> list:
         figures,
         "-o",
         output,
-        resources
+        resources,
     ]
 
 
 def __compile_chapters(manuscript_path: str):
-    formatted_stream = formatter.get_formatted_manuscript_stream_for_print_pdf(manuscript_path)
-    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
+    formatted_stream = printPdfFormatter.run(manuscript_path)
+    subprocess.run(
+        __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
+    )
 
 
 def __compile_opnening():

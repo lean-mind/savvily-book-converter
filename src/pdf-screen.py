@@ -2,11 +2,11 @@ import subprocess
 import sys
 from os import makedirs, chdir
 from typing import IO
-import manuscriptFormatter as formatter
+import src.formatter.ScreenPDFFormatter as screenPdfFormatter
 from typing import Union
 
 
-def __build_screen_pandoc_command() -> list:
+def __pandoc_command() -> list:
     engine = "--pdf-engine=xelatex"
     template = "--template=../src/templates/screen/custom-report.tex"
     figures = "markdown-implicit_figures"
@@ -28,9 +28,10 @@ def __build_screen_pandoc_command() -> list:
 
 
 def __compile_screen_chapters(formatted_stream: Union[IO[bytes], None]):
-    subprocess.run(__build_screen_pandoc_command(), stdin=formatted_stream, check=True)
+    subprocess.run(__pandoc_command(), stdin=formatted_stream, check=True)
 
 
+# TODO.maybe replace xelatex? no way to avoid cd and mkdir
 def __compile_screen_opnening():
     xelatex_command = [
         "xelatex",
@@ -66,9 +67,7 @@ if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
         chdir(".tmp-manuscript")
-        __create_screen_pdf_from_stream(
-            formatter.get_formatted_manuscript_stream_for_print_pdf()
-        )
+        __create_screen_pdf_from_stream(screenPdfFormatter.run())
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print("[ERROR]: Pandoc command failed!\n", e)

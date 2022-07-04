@@ -1,7 +1,7 @@
 import subprocess
 import sys
 from os import makedirs
-from manuscriptFormatter import get_formatted_md_for_epub_as_stream
+import src.formatter.EpubFormatter as epubFormatter
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -11,12 +11,24 @@ def __pandoc_command(manuscript_path: str) -> list:
     css = "--css=src/templates/epub/epub.css"
     cover_image = f"--epub-cover-image={manuscript_path}/resources/book-cover-print.png"
     font = "--epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf"
-    return ["timeout", "600", "pandoc", font, css, cover_image, output, metadata, resources]
+    return [
+        "timeout",
+        "600",
+        "pandoc",
+        font,
+        css,
+        cover_image,
+        output,
+        metadata,
+        resources,
+    ]
 
 
 def __compile_epub_from(manuscript_path: str):
-    formatted_stream = get_formatted_md_for_epub_as_stream(manuscript_path)
-    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
+    formatted_stream = epubFormatter.run(manuscript_path)
+    subprocess.run(
+        __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
+    )
 
 
 if __name__ == "__main__":

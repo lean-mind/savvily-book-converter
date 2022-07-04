@@ -1,30 +1,24 @@
-import src.manuscriptFormatter as formatter
+import src.formatter.EpubFormatter as epubFormatter
+import src.formatter.ScreenPDFFormatter as screenPdfFormatter
+import src.formatter.PrintPDFFormatter as printPdfFormatter
 import src.tests.expected_output_md as expected
 
 
 class TestFormatter:
     def test_new_ebook_format(self):
         assert (
-            formatter.get_formatted_md_for_epub_as_stream("sample-manuscript")
-            .read()
-            .decode()
+            epubFormatter.run("sample-manuscript").read().decode()
             == expected.epub_format
         )
 
     def test_new_pdf_print_format(self):
         assert (
-            formatter.get_formatted_manuscript_stream_for_print_pdf("sample-manuscript")
-            .read()
-            .decode()
+            printPdfFormatter.run("sample-manuscript").read().decode()
             == expected.pdf_print
         )
 
     def test_new_pdf_screen_format(self):
         assert (
-            formatter.get_formatted_manuscript_stream_for_screen_pdf(
-                "sample-manuscript"
-            )
-            .read()
-            .decode()
+            screenPdfFormatter.run("sample-manuscript").read().decode()
             == expected.pdf_screen
         )
