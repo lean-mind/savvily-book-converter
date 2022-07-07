@@ -1,23 +1,31 @@
+import subprocess
 from ebooklib import epub
 import zipfile as epub_explorer
 
-epub_path = "output/ebook.epub"
-book = epub.read_epub(epub_path)
 
+class EpubHelper:
+    ebook: epub.EpubBook
 
-def chapters_href() -> list:
-    full_content = epub_explorer.ZipFile(epub_path).namelist()
-    return [
-        ebook_item.replace("EPUB/", "")
-        for ebook_item in full_content
-        if (ebook_item.startswith("EPUB/text/ch"))
-    ]
+    def __init__(self):
+        subprocess.run(["./convert.sh", "-e"], check=True)
+        self.ebook = epub.read_epub("output/ebook.epub")
+
+    def chapters_href(self) -> list:
+        full_content = epub_explorer.ZipFile("output/ebook.epub").namelist()
+        return [
+            ebook_item.replace("EPUB/", "")
+            for ebook_item in full_content
+            if (ebook_item.startswith("EPUB/text/ch"))
+        ]
+
+    def get_first_chapter(self):
+        return self.ebook.get_item_with_href(self.chapters_href()[0])
 
 
 class TestPandocEpubOutput:
     class TestHeadings:
-        first_chapter_href: str = chapters_href()[0]
-        chapter_one = book.get_item_with_href(first_chapter_href)
+        helper = EpubHelper()
+        chapter_one = helper.get_first_chapter()
         chapter_one_text: str = chapter_one.get_content().decode()
         h1_headings: str = "\n".join(
             line for line in chapter_one_text.splitlines() if (line.startswith("<h1"))
