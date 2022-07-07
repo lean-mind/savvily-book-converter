@@ -1,16 +1,15 @@
 import subprocess
 import sys
 from os import makedirs, chdir
-from typing import IO
 import formatter.ScreenPDFFormatter as screenPdfFormatter
-from typing import Union
 
 
-def __pandoc_command() -> list:
+def __pandoc_command(manuscript_path: str) -> list:
     engine = "--pdf-engine=xelatex"
-    template = "--template=../src/templates/screen/custom-report.tex"
+    template = "--template=src/templates/screen/custom-report.tex"
     figures = "markdown-implicit_figures"
-    output = "tmp_chapters.pdf"
+    resources = f"--resource-path={manuscript_path}"
+    output = ".tmp-manuscript/chapters.pdf"
     return [
         "timeout",
         "600",
@@ -24,26 +23,32 @@ def __pandoc_command() -> list:
         figures,
         "-o",
         output,
+        resources,
     ]
 
 
-def __compile_screen_chapters(formatted_stream: Union[IO[bytes], None]):
-    subprocess.run(__pandoc_command(), stdin=formatted_stream, check=True)
+def __compile_chapters(manuscript_path: str):
+    formatted_stream = screenPdfFormatter.run(manuscript_path)
+    subprocess.run(
+        __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
+    )
 
 
 # TODO.maybe replace xelatex? no way to avoid cd and mkdir
-def __compile_screen_opnening():
+def __compile_opnening():
     xelatex_command = [
         "xelatex",
         "-output-directory",
         ".",
         "../src/templates/screen/opening.tex",
     ]
+    chdir(".tmp-manuscript")
     subprocess.run(xelatex_command)
+    chdir("../")
 
 
 def __join_sections(output_name: str):
-    output = f"-sOutputFile=./../output/{output_name}.pdf"
+    output = f"-sOutputFile=output/{output_name}.pdf"
     ghostscript_command = [
         "gs",
         "-q",
@@ -51,23 +56,23 @@ def __join_sections(output_name: str):
         "-dBATCH",
         "-sDEVICE=pdfwrite",
         output,
-        "opening.pdf",
-        "tmp_chapters.pdf",
+        ".tmp-manuscript/opening.pdf",
+        ".tmp-manuscript/chapters.pdf",
     ]
     subprocess.run(ghostscript_command)
 
 
-def __create_screen_pdf_from_stream(formatted_stream: Union[IO[bytes], None]):
-    __compile_screen_chapters(formatted_stream)
-    __compile_screen_opnening()
+def __compile_pdf_from(manuscript_path: str):
+    __compile_chapters(manuscript_path)
+    __compile_opnening()
     __join_sections("python_screen")
 
 
 if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
-        chdir(".tmp-manuscript")
-        __create_screen_pdf_from_stream(screenPdfFormatter.run())
+        manuscript_path = sys.argv[1]
+        __compile_pdf_from(manuscript_path)
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print("[ERROR]: Pandoc command failed!\n", e)

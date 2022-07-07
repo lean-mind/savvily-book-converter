@@ -4,7 +4,6 @@ from os import makedirs, chdir
 import formatter.PrintPDFFormatter as printPdfFormatter
 
 
-# TODO.restructure based on pdf-screen.py
 def __pandoc_command(manuscript_path: str) -> list:
     engine = "--pdf-engine=xelatex"
     template = "--template=src/templates/print/custom-book.tex"
@@ -62,7 +61,7 @@ def __join_sections(output_name: str):
     subprocess.run(ghostscript_command)
 
 
-def __compile_print_pdf_from(manuscript_path: str):
+def __compile_pdf_from(manuscript_path: str):
     __compile_chapters(manuscript_path)
     __compile_opnening()
     __join_sections("python_print")
@@ -72,7 +71,7 @@ if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
         manuscript_path = sys.argv[1]
-        __compile_print_pdf_from(manuscript_path)
+        __compile_pdf_from(manuscript_path)
         sys.exit(0)
     except subprocess.CalledProcessError as e:
         print("[ERROR]: Pandoc command failed!\n", e)
