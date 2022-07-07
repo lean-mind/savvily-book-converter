@@ -1,7 +1,7 @@
 import subprocess
 import sys
 from os import makedirs
-import src.formatter.EpubFormatter as epubFormatter
+import formatter.EpubFormatter as epubFormatter
 
 
 def __pandoc_command(manuscript_path: str) -> list:
