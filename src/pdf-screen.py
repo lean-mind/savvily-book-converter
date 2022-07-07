@@ -2,7 +2,7 @@ import subprocess
 import sys
 from os import makedirs, chdir
 from typing import IO
-import src.formatter.ScreenPDFFormatter as screenPdfFormatter
+import formatter.ScreenPDFFormatter as screenPdfFormatter
 from typing import Union
 
 
@@ -60,7 +60,7 @@ def __join_sections(output_name: str):
 def __create_screen_pdf_from_stream(formatted_stream: Union[IO[bytes], None]):
     __compile_screen_chapters(formatted_stream)
     __compile_screen_opnening()
-    __join_sections("screen_pdf_by_python")
+    __join_sections("python_screen")
 
 
 if __name__ == "__main__":

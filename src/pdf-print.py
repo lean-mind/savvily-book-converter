@@ -1,7 +1,7 @@
 import subprocess
 import sys
 from os import makedirs, chdir
-import src.formatter.printPDFFormatter as printPdfFormatter
+import formatter.PrintPDFFormatter as printPdfFormatter
 
 
 # TODO.restructure based on pdf-screen.py
@@ -65,7 +65,7 @@ def __join_sections(output_name: str):
 def __compile_print_pdf_from(manuscript_path: str):
     __compile_chapters(manuscript_path)
     __compile_opnening()
-    __join_sections("print_pdf_by_python")
+    __join_sections("python_print")
 
 
 if __name__ == "__main__":
