@@ -17,6 +17,13 @@ def get_chapter_lines_by_index(index: int) -> list:
     return chapter_one_text.splitlines()
 
 
+def get_h1_headings_from_first_chapter() -> list:
+    h1_headings: str = "\n".join(
+        line for line in get_chapter_lines_by_index(0) if (line.startswith("<h1"))
+    )
+    return h1_headings.split("\n")
+
+
 def get_value_from_manuscript_config_file(field_name: str) -> str:
     field_name_plus_separator: str = f"{field_name} = "
     field_value_group: str = "(.*)"
