@@ -1,5 +1,5 @@
 import subprocess
-from ebooklib import epub
+from ebooklib import epub, ITEM_COVER
 import pytest
 import tests.epub_helper as helper
 
@@ -26,6 +26,18 @@ class TestMetadata:
         metadata_title = ebook.get_metadata("DC", "title")[0][0]
         config_title = helper.get_value_from_manuscript_config_file("Title")
         assert metadata_title == config_title
+
+
+class TestImages:
+    cover_image_items = list(ebook.get_items_of_type(ITEM_COVER))
+
+    def test_only_one_cover_image(self):
+        assert len(self.cover_image_items) == 1
+
+    def test_cover_image_is_rendered(self):
+        expected_cover_image_filename = "book-cover-print.png"
+        cover_image_name = self.cover_image_items[0].get_name()
+        assert expected_cover_image_filename in cover_image_name
 
 
 @pytest.fixture
