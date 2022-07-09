@@ -1,10 +1,11 @@
 import subprocess
 from ebooklib import epub, ITEM_COVER
 import pytest
-import tests.epub_helper as helper
+from tests.EpubHelper import EpubHelper
 
 subprocess.run(["./convert.sh", "-e"], check=True)
 ebook = epub.read_epub("output/ebook.epub")
+helper = EpubHelper(ebook)
 
 
 class TestHeadings:
