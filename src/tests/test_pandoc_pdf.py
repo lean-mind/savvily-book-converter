@@ -1,10 +1,9 @@
 import subprocess
 from pdfminer.high_level import extract_text
+import tests.pdf_helper as helper
 
 
 # TODO.Links to footnotes
-# TODO.EST VERSAT SED REMORUM ORDINE MURICE - on odd numbered pages after even page number
-# TODO.Pependit creati ipsum - (twice??) on even numbered pages after odd page number
 class TestPrintOutput:
     subprocess.run(["./convert.sh", "-p"], check=True)
     full_text = extract_text("output/python_print.pdf")
@@ -34,6 +33,10 @@ class TestPrintOutput:
         expected_code_block_lang_tag: str = "Java"
         actual_code_block_lang_tag: str = self.raw_pdf[code_block_position - 1]
         assert actual_code_block_lang_tag == expected_code_block_lang_tag
+
+    def test_chapter_name_in_headers_of_odd_numbered_pages(self):
+        for page_number in helper.get_page_numbers_of_headers_in_chapter(1):
+            assert page_number % 2 != 0
 
 
 # TODO.Links NOT in footnotes
