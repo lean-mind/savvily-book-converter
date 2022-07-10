@@ -11,11 +11,11 @@ setup: ## Setup local environment
 	@pipenv install --dev
 
 .PHONY: tests
-tests: check-output ## Run all tests with coverage
+tests: _check-output ## Run all tests with coverage
 	@pipenv run tests-cov
 
 .PHONY: tests-watch
-tests-watch: check-output ## Run all tests in watch mode
+tests-watch: _check-output ## Run all tests in watch mode
 	@pipenv run tests-watch
 
 .PHONY: tests-ci
