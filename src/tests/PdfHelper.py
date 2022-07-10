@@ -7,12 +7,7 @@ class PdfHelper:
 
     def get_links_from_pdf(self) -> list:
         link_pattern = r"(.*http://.*)"
-        links = [
-            re.match(link_pattern, line).group(1)
-            for line in self.raw_pdf
-            if re.match(link_pattern, line)
-        ]
-        return links
+        return self.find_pattern_in_list(link_pattern, self.raw_pdf)
 
     def get_page_numbers_of_headers_in_chapter(self, chapter_number: int) -> list:
         page_numbers_preceding_pages_with_headers: list = [
@@ -30,17 +25,15 @@ class PdfHelper:
         heading_pattern = r"# (.*)\n"
         with open(f"sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
             lines = f.readlines()
-        for line in lines:
-            if re.match(heading_pattern, line):
-                return re.match(heading_pattern, line).group(1)
+        return self.find_pattern_in_list(heading_pattern, lines)[0]
 
     def get_links_from_manuscript_for_chapter(self, chapter_number: int) -> list:
         link_pattern = r".*(http://.*)\)"
         with open(f"sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
             lines = f.readlines()
-        links = [
-            re.match(link_pattern, line).group(1)
-            for line in lines
-            if re.match(link_pattern, line)
+        return self.find_pattern_in_list(link_pattern, lines)
+
+    def find_pattern_in_list(self, pattern: str, lst: list) -> list:
+        return [
+            re.match(pattern, line).group(1) for line in lst if re.match(pattern, line)
         ]
-        return links
