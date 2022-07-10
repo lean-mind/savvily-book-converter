@@ -31,6 +31,9 @@ class EpubHelper:
         search_pattern: str = f"{field_name_plus_separator}{field_value_group}"
         with open("sample-manuscript/resources/pub-data", "r") as f:
             lines = f.readlines()
-        for line in lines:
-            if re.match(search_pattern, line):
-                return re.match(search_pattern, line).group(1)
+        return self.find_pattern_in_list(search_pattern, lines)
+
+    def find_pattern_in_list(self, pattern: str, lst: list) -> list:
+        return [
+            re.match(pattern, line).group(1) for line in lst if re.match(pattern, line)
+        ]
