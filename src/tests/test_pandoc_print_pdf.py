@@ -28,9 +28,9 @@ class TestPrintOutput:
         ]
         assert len(capitalized_lang_tags) == len(all_code_block_lang_tags)
 
-    def test_code_block_lang_tag_position(self):
-        known_code_block_beginning: str = "if (61) {"
-        code_block_position: int = raw_pdf.index(known_code_block_beginning)
+    def test_lang_tag_precede_code_block(self):
+        known_code_block_start: str = "if (61) {"
+        code_block_position: int = raw_pdf.index(known_code_block_start)
         expected_code_block_lang_tag: str = "Java"
         actual_code_block_lang_tag: str = raw_pdf[code_block_position - 1]
         assert actual_code_block_lang_tag == expected_code_block_lang_tag
@@ -42,12 +42,12 @@ class TestPrintOutput:
     def test_all_links_are_footnotes(self):
         links_in_pdf = helper.get_links_from_pdf()
 
-        links_with_references = [link for link in links_in_pdf if link[0].isdigit()]
+        links_as_footnotes = [link for link in links_in_pdf if link[0].isdigit()]
 
-        assert links_with_references == links_in_pdf
+        assert links_as_footnotes == links_in_pdf
 
     @pytest.mark.skip(reason="Currently broken, links in the same line are swallowed")
-    def test_all_links_are_rendered(self):
+    def test_all_links_are_rendered_as_footnotes(self):
         links_ch1 = helper.get_links_from_manuscript_for_chapter(1)
         links_ch2 = helper.get_links_from_manuscript_for_chapter(2)
         all_links_in_manuscript = links_ch1 + links_ch2
@@ -55,7 +55,3 @@ class TestPrintOutput:
         links_in_pdf = helper.get_links_from_pdf()
 
         assert len(all_links_in_manuscript) == len(links_in_pdf)
-
-
-# TODO.Links NOT in footnotes
-# class TestScreenOutput:
