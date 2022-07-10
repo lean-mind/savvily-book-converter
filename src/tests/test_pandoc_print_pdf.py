@@ -1,9 +1,7 @@
 import pytest
-import subprocess
 from pdfminer.high_level import extract_text
 from tests.PdfHelper import PdfHelper
 
-subprocess.run(["./convert.sh", "-p"], check=True)
 full_text = extract_text("output/python_print.pdf")
 raw_pdf: list = [line for line in full_text.splitlines() if line]
 helper = PdfHelper(raw_pdf)

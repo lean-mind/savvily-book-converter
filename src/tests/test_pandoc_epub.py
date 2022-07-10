@@ -1,9 +1,7 @@
-import subprocess
 from ebooklib import epub, ITEM_COVER
 import pytest
 from tests.EpubHelper import EpubHelper
 
-subprocess.run(["./convert.sh", "-e"], check=True)
 ebook = epub.read_epub("output/ebook.epub")
 helper = EpubHelper(ebook)
 
