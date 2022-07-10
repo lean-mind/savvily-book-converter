@@ -6,3 +6,4 @@ __pycache__/
 missfont.log
 Pipfile.lock
 .coverage
+*.log

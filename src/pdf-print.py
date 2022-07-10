@@ -1,7 +1,10 @@
 import subprocess
 import sys
+import logging
 from os import makedirs, chdir
 import formatter.PrintPDFFormatter as printPdfFormatter
+
+logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -28,13 +31,16 @@ def __pandoc_command(manuscript_path: str) -> list:
 
 
 def __compile_chapters(manuscript_path: str):
+    logging.info(" === COMPILING print pdf chapters ===")
     formatted_stream = printPdfFormatter.run(manuscript_path)
     subprocess.run(
         __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
     )
 
 
+# TODO.maybe replace xelatex? no way to avoid cd and mkdir
 def __compile_opnening():
+    logging.info(" === COMPILING print pdf opening ===")
     xelatex_command = [
         "xelatex",
         "-output-directory",
@@ -47,6 +53,7 @@ def __compile_opnening():
 
 
 def __join_sections(output_name: str):
+    logging.info(" === Joining print pdf opening and chapters ===")
     output = f"-sOutputFile=output/{output_name}.pdf"
     ghostscript_command = [
         "gs",
@@ -72,10 +79,11 @@ if __name__ == "__main__":
         makedirs("output", exist_ok=True)
         manuscript_path = sys.argv[1]
         __compile_pdf_from(manuscript_path)
+        logging.info(" === DONE generating print pdf ===")
         sys.exit(0)
     except subprocess.CalledProcessError as e:
-        print("[ERROR]: Pandoc command failed!\n", e)
+        logging.error(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
-        print("[ERROR]: Something went wrong!\n", e)
+        logging.error(f" === Something went wrong! === \n{e}")
         sys.exit(1)

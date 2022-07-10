@@ -1,7 +1,10 @@
 import subprocess
 import sys
+import logging
 from os import makedirs
 import formatter.EpubFormatter as epubFormatter
+
+logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -25,6 +28,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 
 
 def __compile_epub_from(manuscript_path: str):
+    logging.info(" === COMPILING Epub ===")
     formatted_stream = epubFormatter.run(manuscript_path)
     subprocess.run(
         __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
@@ -36,10 +40,11 @@ if __name__ == "__main__":
         makedirs("output", exist_ok=True)
         manuscript_path = sys.argv[1]
         __compile_epub_from(manuscript_path)
+        logging.info(" === DONE generating Epub ===")
         sys.exit(0)
     except subprocess.CalledProcessError as e:
-        print("[ERROR]: Pandoc command failed!\n", e)
+        logging.error(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
-        print("[ERROR]: Something went wrong!\n", e)
+        logging.error(f" === Something went wrong! === \n{e}")
         sys.exit(1)
