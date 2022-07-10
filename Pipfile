@@ -12,6 +12,6 @@ pytest-watch = "*"
 python_version = "3.10"
 
 [scripts]
-t-cov = "pytest --cov"
-t-watch = "ptw"
+tests-cov = "pytest --cov"
+tests-watch = "ptw"
 tests = "pytest"

@@ -12,16 +12,16 @@ setup: ## Setup local environment
 
 .PHONY: tests
 tests: check-output ## Run all tests with coverage
-	@pipenv run t-cov
+	@pipenv run tests-cov
 
 .PHONY: tests-watch
 tests-watch: check-output ## Run all tests in watch mode
-	@pipenv run t-watch
+	@pipenv run tests-watch
 
 .PHONY: tests-ci
 tests-ci: ## Run all tests forcing book compilation
 	./convert.sh -a
-	@pipenv run t-watch
+	@pipenv run tests-watch
 
 .PHONY: check-output
 _check-output:
