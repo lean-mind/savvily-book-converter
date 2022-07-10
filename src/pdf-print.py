@@ -38,7 +38,7 @@ def __compile_chapters(manuscript_path: str):
     )
 
 
-# TODO.maybe replace xelatex? no way to avoid cd and mkdir
+# TODO.check pathing within template to avoid cd
 def __compile_opnening():
     logging.info(" === COMPILING print pdf opening ===")
     xelatex_command = [
