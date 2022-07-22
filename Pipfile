@@ -3,7 +3,7 @@
 [dev-packages]
 pdfminer-six = "*"
 ebooklib = "*"
-black = "*"
+autopep8 = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-watch = "*"
