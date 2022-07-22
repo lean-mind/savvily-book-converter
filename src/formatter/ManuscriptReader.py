@@ -23,9 +23,7 @@ class ManuscriptReader:
 
     def get_sorted_chapters(self) -> list:
         manuscript = os.listdir(self.path)
-        return sorted(
-            [file for file in manuscript if re.match(r"\d\d_.*\.md|\d\d_.*\.txt", file)]
-        )
+        return sorted([file for file in manuscript if re.match(r"\d\d_.*\.md|\d\d_.*\.txt", file)])
 
     def _list_to_string(self, list: list) -> str:
         return "".join(list)

@@ -17,7 +17,9 @@ class TestPrintOutput:
 
     def test_code_block_lang_tag_capitalized(self):
         all_code_block_lang_tags: list = [
-            tag for tag in raw_pdf if tag.lower() in ["java", "python"]
+            tag
+            for tag in raw_pdf
+            if tag.lower() in ["java", "python"]
         ]
         capitalized_lang_tags: list = [
             capitalized_tag
@@ -39,9 +41,10 @@ class TestPrintOutput:
 
     def test_all_links_are_footnotes(self):
         links_in_pdf = helper.get_links_from_pdf()
-
-        links_as_footnotes = [link for link in links_in_pdf if link[0].isdigit()]
-
+        links_as_footnotes = [
+            link
+            for link in links_in_pdf
+            if link[0].isdigit()]
         assert links_as_footnotes == links_in_pdf
 
     @pytest.mark.skip(reason="Currently broken, links in the same line are swallowed")
@@ -49,7 +52,5 @@ class TestPrintOutput:
         links_ch1 = helper.get_links_from_manuscript_for_chapter(1)
         links_ch2 = helper.get_links_from_manuscript_for_chapter(2)
         all_links_in_manuscript = links_ch1 + links_ch2
-
         links_in_pdf = helper.get_links_from_pdf()
-
         assert len(all_links_in_manuscript) == len(links_in_pdf)

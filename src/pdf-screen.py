@@ -13,58 +13,34 @@ def __pandoc_command(manuscript_path: str) -> list:
     figures = "markdown-implicit_figures"
     resources = f"--resource-path={manuscript_path}"
     output = ".tmp-manuscript/chapters.pdf"
-    return [
-        "timeout",
-        "600",
-        "pandoc",
-        engine,
-        template,
-        "--listings",
-        "-V",
-        "documentclass=report",
-        "-f",
-        figures,
-        "-o",
-        output,
-        resources,
-    ]
+
+    return ["timeout", "600", "pandoc", engine, template, "--listings",
+            "-V", "documentclass=report", "-f", figures, "-o", output, resources]
 
 
 def __compile_chapters(manuscript_path: str):
     logging.info(" === COMPILING screen pdf chapters ===")
+
     formatted_stream = screenPdfFormatter.run(manuscript_path)
-    subprocess.run(
-        __pandoc_command(manuscript_path), stdin=formatted_stream, check=True
-    )
+    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
 
 
 # TODO.check pathing within template to avoid cd
 def __compile_opnening():
     logging.info(" === COMPILING screen pdf opening ===")
-    xelatex_command = [
-        "xelatex",
-        "-output-directory",
-        ".",
-        "../src/templates/screen/opening.tex",
-    ]
+
     chdir(".tmp-manuscript")
+    xelatex_command = ["xelatex", "-output-directory", ".", "../src/templates/screen/opening.tex"]
     subprocess.run(xelatex_command)
     chdir("../")
 
 
 def __join_sections(output_name: str):
     logging.info(" === Joining screen pdf opening and chapters ===")
+
     output = f"-sOutputFile=output/{output_name}.pdf"
-    ghostscript_command = [
-        "gs",
-        "-q",
-        "-dNOPAUSE",
-        "-dBATCH",
-        "-sDEVICE=pdfwrite",
-        output,
-        ".tmp-manuscript/opening.pdf",
-        ".tmp-manuscript/chapters.pdf",
-    ]
+    ghostscript_command = ["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=pdfwrite",
+                           output, ".tmp-manuscript/opening.pdf", ".tmp-manuscript/chapters.pdf"]
     subprocess.run(ghostscript_command)
 
 
@@ -81,6 +57,7 @@ if __name__ == "__main__":
         __compile_pdf_from(manuscript_path)
         logging.info(" === DONE generating screen pdf ===")
         sys.exit(0)
+
     except subprocess.CalledProcessError as e:
         logging.error(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)

@@ -17,7 +17,9 @@ class TestPrintOutput:
 
     def test_code_block_lang_tag_capitalized(self):
         all_code_block_lang_tags: list = [
-            tag for tag in raw_pdf if tag.lower() in ["java", "python"]
+            tag
+            for tag in raw_pdf
+            if tag.lower() in ["java", "python"]
         ]
         capitalized_lang_tags: list = [
             capitalized_tag
@@ -35,5 +37,4 @@ class TestPrintOutput:
 
     def test_no_links_are_outside_references(self):
         links_in_pdf = helper.get_links_from_pdf()
-
         assert len(links_in_pdf) == 0

@@ -35,5 +35,7 @@ class PdfHelper:
 
     def find_pattern_in_list(self, pattern: str, lst: list) -> list:
         return [
-            re.match(pattern, line).group(1) for line in lst if re.match(pattern, line)
+            re.match(pattern, line).group(1)
+            for line in lst
+            if re.match(pattern, line)
         ]
