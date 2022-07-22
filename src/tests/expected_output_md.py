@@ -9,14 +9,17 @@ inrequietus. Gramen saxum huius.
 
 ![lean-image](resources/carlos.jpg)
 
+![lean-image](resources/carlos.jpg)
+
 Membra LEAN MIND[^lean] eripienda naufragus fors. Resecat lintea distentae et fui subitis lucis;
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
-veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
+veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
+
+Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
 
 ```{title=Java}
 if (61) {
@@ -51,17 +54,20 @@ if (layout_ibm) {
     cable = barcraft;
     botnet_virus.output -= 1;
 }
+[link in code](http://block.wrong)
 vertical *= secondary / 2 + masterDosOptical + 5;
 systemDynamicWebsite(engine);
 kilobyte_syn_ajax /= user_atm_daemon(44);
 ```
 
-Frustra erat cum remittit auras *calet* undas spiro lugubris excivere ferae
+Frustra erat cum[^lean2] remittit auras *calet* undas spiro lugubris excivere ferae
 lacrimis Procrin messes ille. Promissa obliquum, erat sorores: **non** leves
 modo, marcida [sol mentis poscit](http://proterva-scilicet.org/ille.php) omine,
 plenaque aspera parentum recursus. Summo arcus: operatus tumultus secuti quanto
 promittat abstulit siquid: requie pererrat vires iussit! Conclamat fessos furit
 quinta, [haec](http://solvit-admonuit.net/fuerat) foliis, me pedes ut.
+
+[^lean2]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 
 > Fidum denique quodsi [contraria limite](http://cautes.org/alcithoe.html) et
 > obruta quoque. Os digna lacus hoc ora videtis habenas iracunda vultus non
@@ -74,11 +80,13 @@ Cava tuos per adsere exsistere ventos maestae; est moram maturuit ungulaque
 pennis collis celeberrima. Primordia videor: coniunx precibus flammasque quaeras
 tremescere esset fumis Telamon barbae stimulatus cecidit incurvae confudit
 plena, atque antiqua. Sed ille carmina **silvarum** piscem. Duas regis cauda
-scire, inmota oris ultima huius Talibus, spemque parte ad male.
+scire, inmota oris ultima huius[^broken] Talibus, spemque parte ad male.
+
+[^broken]: This reference might [break](https://www.nyan.cat/) for print-pdf.
 
 Clamore Vasta oculis lymphae debilis roganti verendus mecum inscripsere hanc
 madefactaque tecta turba scopulis caruit frondentis crederet, o? Vimque est
-talibus venit, nubila in o lenta, hanc!
+talibus venit, nubila in [broken2](http://www.mills.com/ut-rem-dolorem-velit-similique-consequuntur-deleniti-consectetur-adipiscing-elit.html) o lenta, hanc!
 
 > Cum nil namque diruta quotiens quondam alimentaque. *Vox summe* pluma [membra
 > et](http://www.siquis-sum.com/) parvoque possit ministrae potitur erat terga
@@ -249,17 +257,20 @@ inrequietus. Gramen saxum huius.
 
 ![lean-image](resources/carlos.jpg)
 
+![lean-image](resources/carlos.jpg)
+
 Membra LEAN MIND[^lean] eripienda naufragus fors. Resecat lintea distentae et fui subitis lucis;
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
-veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa LINK2[^http://adsensit.net/visa-inperfectus] damno *tegendas*.
-
-[^http://adsensit.net/visa-inperfectus]: http://adsensit.net/visa-inperfectus
-
+veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
+
+Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa LINK2[^http://adsensit.net/visa-inperfectus] damno *tegendas*.
+
+[^http://adsensit.net/visa-inperfectus]: http://adsensit.net/visa-inperfectus
+
 
 ```{title=Java}
 if (61) {
@@ -297,12 +308,16 @@ if (layout_ibm) {
     cable = barcraft;
     botnet_virus.output -= 1;
 }
+link in code[^http://block.wrong]
+
+[^http://block.wrong]: http://block.wrong
+
 vertical *= secondary / 2 + masterDosOptical + 5;
 systemDynamicWebsite(engine);
 kilobyte_syn_ajax /= user_atm_daemon(44);
 ```
 
-Frustra erat cum remittit auras *calet* undas spiro lugubris excivere ferae
+Frustra erat cum[^lean2] remittit auras *calet* undas spiro lugubris excivere ferae
 lacrimis Procrin messes ille. Promissa obliquum, erat sorores: **non** leves
 modo, marcida sol mentis poscit[^http://proterva-scilicet.org/ille.php] omine,
 
@@ -314,6 +329,8 @@ quinta, haec[^http://solvit-admonuit.net/fuerat] foliis, me pedes ut.
 
 [^http://solvit-admonuit.net/fuerat]: http://solvit-admonuit.net/fuerat
 
+
+[^lean2]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 
 > Fidum denique quodsi contraria limite[^http://cautes.org/alcithoe.html] et
 
@@ -329,11 +346,16 @@ Cava tuos per adsere exsistere ventos maestae; est moram maturuit ungulaque
 pennis collis celeberrima. Primordia videor: coniunx precibus flammasque quaeras
 tremescere esset fumis Telamon barbae stimulatus cecidit incurvae confudit
 plena, atque antiqua. Sed ille carmina **silvarum** piscem. Duas regis cauda
-scire, inmota oris ultima huius Talibus, spemque parte ad male.
+scire, inmota oris ultima huius[^broken] Talibus, spemque parte ad male.
+
+[^broken]: This reference might break[^https://www.nyan.cat/] for print-pdf.
+
+[^https://www.nyan.cat/]: https://www.nyan.cat/
+
 
 Clamore Vasta oculis lymphae debilis roganti verendus mecum inscripsere hanc
 madefactaque tecta turba scopulis caruit frondentis crederet, o? Vimque est
-talibus venit, nubila in o lenta, hanc!
+talibus venit, nubila in [broken2](http://www.mills.com/ut-rem-dolorem-velit-similique-consequuntur-deleniti-consectetur-adipiscing-elit.html) o lenta, hanc!
 
 > Cum nil namque diruta quotiens quondam alimentaque. *Vox summe* pluma [membra
 > et](http://www.siquis-sum.com/) parvoque possit ministrae potitur erat terga
@@ -510,14 +532,17 @@ inrequietus. Gramen saxum huius.
 
 ![lean-image](resources/carlos.jpg)
 
+![lean-image](resources/carlos.jpg)
+
 Membra LEAN MIND[^lean] eripienda naufragus fors. Resecat lintea distentae et fui subitis lucis;
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
-veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
+veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
+
+Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
 
 ```{title=Java}
 if (61) {
@@ -552,17 +577,20 @@ if (layout_ibm) {
     cable = barcraft;
     botnet_virus.output -= 1;
 }
+[link in code](http://block.wrong)
 vertical *= secondary / 2 + masterDosOptical + 5;
 systemDynamicWebsite(engine);
 kilobyte_syn_ajax /= user_atm_daemon(44);
 ```
 
-Frustra erat cum remittit auras *calet* undas spiro lugubris excivere ferae
+Frustra erat cum[^lean2] remittit auras *calet* undas spiro lugubris excivere ferae
 lacrimis Procrin messes ille. Promissa obliquum, erat sorores: **non** leves
 modo, marcida [sol mentis poscit](http://proterva-scilicet.org/ille.php) omine,
 plenaque aspera parentum recursus. Summo arcus: operatus tumultus secuti quanto
 promittat abstulit siquid: requie pererrat vires iussit! Conclamat fessos furit
 quinta, [haec](http://solvit-admonuit.net/fuerat) foliis, me pedes ut.
+
+[^lean2]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 
 > Fidum denique quodsi [contraria limite](http://cautes.org/alcithoe.html) et
 > obruta quoque. Os digna lacus hoc ora videtis habenas iracunda vultus non
@@ -575,11 +603,13 @@ Cava tuos per adsere exsistere ventos maestae; est moram maturuit ungulaque
 pennis collis celeberrima. Primordia videor: coniunx precibus flammasque quaeras
 tremescere esset fumis Telamon barbae stimulatus cecidit incurvae confudit
 plena, atque antiqua. Sed ille carmina **silvarum** piscem. Duas regis cauda
-scire, inmota oris ultima huius Talibus, spemque parte ad male.
+scire, inmota oris ultima huius[^broken] Talibus, spemque parte ad male.
+
+[^broken]: This reference might [break](https://www.nyan.cat/) for print-pdf.
 
 Clamore Vasta oculis lymphae debilis roganti verendus mecum inscripsere hanc
 madefactaque tecta turba scopulis caruit frondentis crederet, o? Vimque est
-talibus venit, nubila in o lenta, hanc!
+talibus venit, nubila in [broken2](http://www.mills.com/ut-rem-dolorem-velit-similique-consequuntur-deleniti-consectetur-adipiscing-elit.html) o lenta, hanc!
 
 > Cum nil namque diruta quotiens quondam alimentaque. *Vox summe* pluma [membra
 > et](http://www.siquis-sum.com/) parvoque possit ministrae potitur erat terga
@@ -748,14 +778,17 @@ inrequietus. Gramen saxum huius.
 
 ![lean-image](resources/carlos.jpg)
 
+![lean-image] (resources/carlos.jpg)
+
 Membra LEAN MIND [^lean] eripienda naufragus fors. Resecat lintea distentae et fui subitis lucis;
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
-veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
+veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
+
+Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
 
 ```java
 if (61) {
@@ -779,7 +812,7 @@ if (only < 3) {
 
 Tecum praesepibus nova: flos pater nec Peneos possem torvo paventque, digitosque
 aquosae mea **vacat** dominos voluptas. Nam coniunx
-[remisso](http://inventos-sub.com/); id tori, non flenti, quae pelago *quae*
+[remisso] (http://inventos-sub.com/); id tori, non flenti, quae pelago *quae*
 extulerat aures refer ubi coniuge nomen. Venasque mella manus manus repulsae ea
 per, celatus fueritque mearum flava, vocant.
 
@@ -790,17 +823,20 @@ if (layout_ibm) {
     cable = barcraft;
     botnet_virus.output -= 1;
 }
+[link in code](http://block.wrong)
 vertical *= secondary / 2 + masterDosOptical + 5;
 systemDynamicWebsite(engine);
 kilobyte_syn_ajax /= user_atm_daemon(44);
 ```
 
-Frustra erat cum remittit auras *calet* undas spiro lugubris excivere ferae
+Frustra erat cum [^lean2] remittit auras *calet* undas spiro lugubris excivere ferae
 lacrimis Procrin messes ille. Promissa obliquum, erat sorores: **non** leves
 modo, marcida [sol mentis poscit](http://proterva-scilicet.org/ille.php) omine,
 plenaque aspera parentum recursus. Summo arcus: operatus tumultus secuti quanto
 promittat abstulit siquid: requie pererrat vires iussit! Conclamat fessos furit
 quinta, [haec](http://solvit-admonuit.net/fuerat) foliis, me pedes ut.
+
+ [^lean2]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 
 > Fidum denique quodsi [contraria limite](http://cautes.org/alcithoe.html) et
 > obruta quoque. Os digna lacus hoc ora videtis habenas iracunda vultus non
@@ -812,11 +848,13 @@ Cava tuos per adsere exsistere ventos maestae; est moram maturuit ungulaque
 pennis collis celeberrima. Primordia videor: coniunx precibus flammasque quaeras
 tremescere esset fumis Telamon barbae stimulatus cecidit incurvae confudit
 plena, atque antiqua. Sed ille carmina **silvarum** piscem. Duas regis cauda
-scire, inmota oris ultima huius Talibus, spemque parte ad male.
+scire, inmota oris ultima huius [^broken] Talibus, spemque parte ad male.
+
+[^broken]: This reference might [break](https://www.nyan.cat/) for print-pdf.
 
 Clamore Vasta oculis lymphae debilis roganti verendus mecum inscripsere hanc
 madefactaque tecta turba scopulis caruit frondentis crederet, o? Vimque est
-talibus venit, nubila in o lenta, hanc!
+talibus venit, nubila in [broken2](http://www.mills.com/ut-rem-dolorem-velit-similique-consequuntur-deleniti-consectetur-adipiscing-elit.html) o lenta, hanc!
 
 > Cum nil namque diruta quotiens quondam alimentaque. *Vox summe* pluma [membra
 > et](http://www.siquis-sum.com/) parvoque possit ministrae potitur erat terga
@@ -978,14 +1016,17 @@ inrequietus. Gramen saxum huius.
 
 ![lean-image](resources/carlos.jpg)
 
+![lean-image] (resources/carlos.jpg)
+
 Membra LEAN MIND [^lean] eripienda naufragus fors. Resecat lintea distentae et fui subitis lucis;
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
-veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
+veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
+
+Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
 
 ```java
 if (61) {
@@ -1009,7 +1050,7 @@ if (only < 3) {
 
 Tecum praesepibus nova: flos pater nec Peneos possem torvo paventque, digitosque
 aquosae mea **vacat** dominos voluptas. Nam coniunx
-[remisso](http://inventos-sub.com/); id tori, non flenti, quae pelago *quae*
+[remisso] (http://inventos-sub.com/); id tori, non flenti, quae pelago *quae*
 extulerat aures refer ubi coniuge nomen. Venasque mella manus manus repulsae ea
 per, celatus fueritque mearum flava, vocant.
 
@@ -1020,17 +1061,20 @@ if (layout_ibm) {
     cable = barcraft;
     botnet_virus.output -= 1;
 }
+[link in code](http://block.wrong)
 vertical *= secondary / 2 + masterDosOptical + 5;
 systemDynamicWebsite(engine);
 kilobyte_syn_ajax /= user_atm_daemon(44);
 ```
 
-Frustra erat cum remittit auras *calet* undas spiro lugubris excivere ferae
+Frustra erat cum [^lean2] remittit auras *calet* undas spiro lugubris excivere ferae
 lacrimis Procrin messes ille. Promissa obliquum, erat sorores: **non** leves
 modo, marcida [sol mentis poscit](http://proterva-scilicet.org/ille.php) omine,
 plenaque aspera parentum recursus. Summo arcus: operatus tumultus secuti quanto
 promittat abstulit siquid: requie pererrat vires iussit! Conclamat fessos furit
 quinta, [haec](http://solvit-admonuit.net/fuerat) foliis, me pedes ut.
+
+ [^lean2]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 
 > Fidum denique quodsi [contraria limite](http://cautes.org/alcithoe.html) et
 > obruta quoque. Os digna lacus hoc ora videtis habenas iracunda vultus non
@@ -1042,11 +1086,13 @@ Cava tuos per adsere exsistere ventos maestae; est moram maturuit ungulaque
 pennis collis celeberrima. Primordia videor: coniunx precibus flammasque quaeras
 tremescere esset fumis Telamon barbae stimulatus cecidit incurvae confudit
 plena, atque antiqua. Sed ille carmina **silvarum** piscem. Duas regis cauda
-scire, inmota oris ultima huius Talibus, spemque parte ad male.
+scire, inmota oris ultima huius [^broken] Talibus, spemque parte ad male.
+
+[^broken]: This reference might [break](https://www.nyan.cat/) for print-pdf.
 
 Clamore Vasta oculis lymphae debilis roganti verendus mecum inscripsere hanc
 madefactaque tecta turba scopulis caruit frondentis crederet, o? Vimque est
-talibus venit, nubila in o lenta, hanc!
+talibus venit, nubila in [broken2](http://www.mills.com/ut-rem-dolorem-velit-similique-consequuntur-deleniti-consectetur-adipiscing-elit.html) o lenta, hanc!
 
 > Cum nil namque diruta quotiens quondam alimentaque. *Vox summe* pluma [membra
 > et](http://www.siquis-sum.com/) parvoque possit ministrae potitur erat terga

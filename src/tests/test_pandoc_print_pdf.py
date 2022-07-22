@@ -39,13 +39,20 @@ class TestPrintOutput:
         for page_number in helper.get_page_numbers_of_headers_in_chapter(1):
             assert page_number % 2 != 0
 
-    def test_all_links_are_footnotes(self):
+    def test_all_links_are_in_footnotes_except_for_code_blocks(self):
+        known_broken_link = "http:// block.wrong"
         links_in_pdf = helper.get_links_from_pdf()
-        links_as_footnotes = [
+        links_in_pdf_with_broken_link_removed = [
             link
             for link in links_in_pdf
-            if link[0].isdigit()]
-        assert links_as_footnotes == links_in_pdf
+            if known_broken_link not in link
+        ]
+        links_in_footnotes = [
+            link
+            for link in links_in_pdf_with_broken_link_removed
+            if link[0].isdigit()
+        ]
+        assert links_in_footnotes == links_in_pdf_with_broken_link_removed
 
     @pytest.mark.skip(reason="Currently broken, links in the same line are swallowed")
     def test_all_links_are_rendered_as_footnotes(self):

@@ -35,6 +35,7 @@ class TestPrintOutput:
         actual_code_block_lang_tag: str = raw_pdf[code_block_position - 1]
         assert actual_code_block_lang_tag == expected_code_block_lang_tag
 
-    def test_no_links_are_outside_references(self):
+    def test_only_link_in_code_block_fails(self):
         links_in_pdf = helper.get_links_from_pdf()
-        assert len(links_in_pdf) == 0
+        print(links_in_pdf)
+        assert len(links_in_pdf) == 1
